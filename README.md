@@ -1,2 +1,2 @@
 # receptarSemestralka
-Recipe sharing web app
+Recipe sharing web app, made in html, css, vanilla javascript and php.
