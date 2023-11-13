@@ -12,9 +12,9 @@
         <h1 id="heading">Registrace</h1>
         <form action="register.php" id="form" method="POST">
             <div class="fieldContainer">
-                <label for="username" class="inputLabel">Uživatelské jméno<span class="required">*</span>: </label>
+                <label for="username" class="inputLabel">Uživatelské jméno: <span class="required">*</span></label>
                 <input type="text" id="username" name="username" class="formInput">
-                <div class="error">asd</div>
+                <div class="error" id="usernameError"></div>
             </div>
             <div class="fieldContainer">
                 <label for="email" class="inputLabel">Email: </label>
@@ -22,14 +22,14 @@
                 <div class="error" id="emailError"></div>
             </div>
             <div class="fieldContainer">
-                <label for="password1" class="inputLabel">Heslo<span class="required">*</span>: </label>
+                <label for="password1" class="inputLabel">Heslo: <span class="required">*</span></label>
                 <input type="password" id="password1" name="password1" class="formInput">
-                <div class="error">asd</div>
+                <div class="error" id="password1Error"></div>
             </div>
             <div class="fieldContainer">
-                <label for="password2" class="inputLabel">Heslo znovu<span class="required">*</span>: </label>
+                <label for="password2" class="inputLabel">Heslo znovu: <span class="required">*</span></label>
                 <input type="password" id="password2" name="password2" class="formInput">
-                <div class="error">Heslo není stejné</div>
+                <div class="error" id="password2Error"></div>
             </div>
             <div class="fieldContainer">
                 <button type="submit" id="submitButton">Odeslat</button>
