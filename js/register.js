@@ -15,19 +15,15 @@ function validateUsername() {
 
 function validateEmail() {
     const email = emailTag.value
-    if (email == "") {return {valid: true, error:null}}
-    if (email.includes("@")) {return {valid:true, error:null}}
+    if (email == "") {return {valid: true, error:""}}
+    if (email.includes("@")) {return {valid:true, error:""}}
     if (!email.includes("@")) {return {valid:false, error:"Email není platný"}}
 }
 
 emailTag.addEventListener("blur", () => {
-    const {isValid, error} = validateEmail()
-    if (!isValid) {
-        emailError.innerHTML = error
-    }
-    else {
-        emailError.innerHTML = ""
-    }
+    const { error } = validateEmail()
+    emailError.innerHTML = error
+    //error je prázdný string, pokud chyba není
 })
 
 
@@ -43,13 +39,13 @@ function validatePassword1() {
         {return {valid:false, error:"Heslo musí alespoň 1 číslo"}}
     }
     //if everything is correct
-    return {valid: true, error:null}
+    return {valid: true, error:""}
 } 
 
 function validatePassword2() {
     const password2 = password2Tag.value
     if (password2 === password1Tag.value) {
-        {return {valid:true, error:null}}
+        {return {valid:true, error:""}}
     }
     else {
         {return {valid:false, error:"Hesla se neshodují"}}
@@ -59,10 +55,9 @@ function validatePassword2() {
 function runPasswordChecks() {
     const password1 = validatePassword1()
     const password2 = validatePassword2()
-    if (!password1.valid) {password1Error.innerHTML = password1.error}
-    else {password1Error.innerHTML = ""}
-    if (!password2.valid) {password2Error.innerHTML = password2.error}
-    else {password2Error.innerHTML = ""}
+    password1Error.innerHTML = password1.error
+    password2Error.innerHTML = password2.error
+    //error je prázdný string, pokud chyba není
 }
 
 password1Tag.addEventListener("blur", () => {
