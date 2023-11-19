@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrace</title>
     <link rel="stylesheet" href="./css/authForm.css">
+    <link rel="stylesheet" href="./css/header.css">
     <script src="./js/register.js" defer></script>
     <link rel="shortcut icon" href="./images/cookbook.svg" type="image/x-icon">
 </head>
 <body>
+    <?php include "header.php" ?>
     <main id="main">
         <h1 id="heading">Registrace</h1>
         <form action="register.php" id="form" method="POST">

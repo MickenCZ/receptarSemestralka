@@ -3,6 +3,8 @@
     color: white;
     padding: 15px 0px;
     text-align: center;
+    position: fixed;
+    width: 100vw;
 }
 
 .navLink {
