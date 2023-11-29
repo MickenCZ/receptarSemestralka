@@ -11,17 +11,17 @@
 </head>
 <body>
     <?php include "header.php" ?>
-    <main id="main">
+    <main>
         <h1 id="heading">Přihlášení</h1>
-        <form action="login.php" id="form" method="POST">
+        <form action="login.php" method="POST">
             <div class="fieldContainer">
-                <label for="username" class="inputLabel">Uživatelské jméno: <span class="required">*</span></label>
-                <input type="text" id="username" name="username" class="formInput">
+                <label for="username">Uživatelské jméno: <span class="required">*</span></label>
+                <input type="text" id="username" name="username">
                 <div class="error" id="usernameError"></div>
             </div>
             <div class="fieldContainer">
-                <label for="password1" class="inputLabel">Heslo: <span class="required">*</span></label>
-                <input type="password" id="password1" name="password1" class="formInput">
+                <label for="password1">Heslo: <span class="required">*</span></label>
+                <input type="password" id="password1" name="password1">
                 <div class="error" id="password1Error"></div>
             </div>
             <div class="fieldContainer">

@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-#main {
+main {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -13,7 +13,7 @@
     flex-direction: column;
 }/*Main is consisting of the whole page and it's there to position elements correctly*/
 
-#form {
+form {
     background-color: #fff;
     padding: 1.25rem;
     border-radius: 0.5rem;
@@ -30,7 +30,7 @@
     margin-top: 1.9rem;
 }
 
-.inputLabel {
+label {
     font-size: 1.1em;
     margin-bottom: 0.3rem;
     color: #333;
@@ -41,7 +41,7 @@
     margin-left: 0.2rem;
 }
 
-.formInput {
+input {
     width: 100%;
     padding: 0.625rem;
     border: 1px solid #ccc;

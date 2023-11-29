@@ -11,27 +11,27 @@
 </head>
 <body>
     <?php include "header.php" ?>
-    <main id="main">
+    <main>
         <h1 id="heading">Registrace</h1>
-        <form action="register.php" id="form" method="POST">
+        <form action="register.php" method="POST">
             <div class="fieldContainer">
-                <label for="username" class="inputLabel">Uživatelské jméno: <span class="required">*</span></label>
-                <input type="text" id="username" name="username" class="formInput">
+                <label for="username">Uživatelské jméno: <span class="required">*</span></label>
+                <input type="text" id="username" name="username">
                 <div class="error" id="usernameError"></div>
             </div>
             <div class="fieldContainer">
-                <label for="email" class="inputLabel">Email: </label>
-                <input type="email" id="email" name="email" class="formInput">
+                <label for="email">Email: </label>
+                <input type="email" id="email" name="email">
                 <div class="error" id="emailError"></div>
             </div>
             <div class="fieldContainer">
-                <label for="password1" class="inputLabel">Heslo: <span class="required">*</span></label>
-                <input type="password" id="password1" name="password1" class="formInput">
+                <label for="password1">Heslo: <span class="required">*</span></label>
+                <input type="password" id="password1" name="password1">
                 <div class="error" id="password1Error"></div>
             </div>
             <div class="fieldContainer">
-                <label for="password2" class="inputLabel">Heslo znovu: <span class="required">*</span></label>
-                <input type="password" id="password2" name="password2" class="formInput">
+                <label for="password2">Heslo znovu: <span class="required">*</span></label>
+                <input type="password" id="password2" name="password2">
                 <div class="error" id="password2Error"></div>
             </div>
             <div class="fieldContainer">

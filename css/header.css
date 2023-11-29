@@ -1,4 +1,4 @@
-#header {
+header {
     background-color: #3498db;
     color: white;
     padding: 15px 0px;
@@ -7,7 +7,7 @@
     width: 100vw;
 }
 
-.navLink {
+nav > a {
     color: white;
     text-decoration: none;
     margin: 0px 15px;
@@ -15,6 +15,6 @@
     font-family: 'Arial', sans-serif;
 }
 
-.navLink:hover {
+nav > a:hover {
     text-decoration: underline;
 }
