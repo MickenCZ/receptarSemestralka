@@ -74,3 +74,9 @@ input {
 #authSwitch {
     font-size: 1.1em;
 }
+
+#error {
+    color: red;
+    font-size: 1.1em;
+    margin-top: 10px;
+}

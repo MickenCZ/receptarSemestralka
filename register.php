@@ -1,3 +1,19 @@
+<?php
+   
+
+
+   if (isset($_POST["username"]) &&
+   isset($_POST["email"]) &&
+   isset($_POST["password1"]) &&
+   isset($_POST["password2"])
+   ) {
+
+   }
+   else {
+
+   }
+?>
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -16,7 +32,7 @@
         <form action="register.php" method="POST">
             <div class="fieldContainer">
                 <label for="username">Uživatelské jméno: <span class="required">*</span></label>
-                <input type="text" id="username" name="username">
+                <input type="text" id="username" name="username" value="<?php if(isset($_GET['username'])) echo(htmlspecialchars($_GET['username'])); ?>">
                 <div class="error" id="usernameError"></div>
             </div>
             <div class="fieldContainer">
@@ -38,6 +54,7 @@
                 <button type="submit" id="submitButton">Odeslat</button>
             </div>
             <div id="authSwitch">Máte už účet? <a href="./login.php">Přihlašte se</a></div>
+            <div id="error"></div>
         </form>
     </main>
 </body>
