@@ -1,4 +1,4 @@
-const formTag = document.getElementById("form")
+const formTag = document.querySelector("form")
 const usernameTag = document.getElementById("username")
 const password1Tag = document.getElementById("password1")
 const usernameError = document.getElementById("usernameError")
@@ -30,4 +30,10 @@ password1Tag.addEventListener("blur", () => {
 usernameTag.addEventListener("blur", () => {
     const { error } = validateUsername()
     usernameError.innerHTML = error
+})
+
+formTag.addEventListener("submit", e => {
+    if (!(validateUsername().valid && validatePassword1().valid)) {
+        e.preventDefault()
+    }
 })

@@ -1,4 +1,4 @@
-const formTag = document.getElementById("form")
+const formTag = document.querySelector("form")
 const usernameTag = document.getElementById("username")
 const emailTag = document.getElementById("email")
 const password1Tag = document.getElementById("password1")
