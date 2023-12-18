@@ -16,18 +16,19 @@
         <form action="login.php" method="POST">
             <div class="fieldContainer">
                 <label for="username">Uživatelské jméno: <span class="required">*</span></label>
-                <input type="text" id="username" name="username">
+                <input type="text" id="username" name="username" value="<?php if(isset($_GET['username'])) echo(htmlspecialchars($_GET['username']));?>">
                 <div class="error" id="usernameError"></div>
             </div>
             <div class="fieldContainer">
                 <label for="password1">Heslo: <span class="required">*</span></label>
-                <input type="password" id="password1" name="password1">
+                <input type="password" id="password1" name="password1" value="<?php if(isset($_GET['password1'])) echo(htmlspecialchars($_GET['password1']));?>">
                 <div class="error" id="password1Error"></div>
             </div>
             <div class="fieldContainer">
                 <button type="submit" id="submitButton">Odeslat</button>
             </div>
             <div id="authSwitch">Nemáte ještě účet? <a href="./register.php">Zaregistrujte se</a></div>
+            <div id="error"><?php if(isset($_GET['error'])) echo(htmlspecialchars($_GET['error']));?></div>
         </form>
     </main>
 </body>

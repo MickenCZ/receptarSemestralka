@@ -32,29 +32,29 @@
         <form action="register.php" method="POST">
             <div class="fieldContainer">
                 <label for="username">Uživatelské jméno: <span class="required">*</span></label>
-                <input type="text" id="username" name="username" value="<?php if(isset($_GET['username'])) echo(htmlspecialchars($_GET['username'])); ?>">
+                <input type="text" id="username" name="username" value="<?php if(isset($_GET['username'])) echo(htmlspecialchars($_GET['username']));?>">
                 <div class="error" id="usernameError"></div>
             </div>
             <div class="fieldContainer">
                 <label for="email">Email: </label>
-                <input type="email" id="email" name="email">
+                <input type="email" id="email" name="email" value="<?php if(isset($_GET['email'])) echo(htmlspecialchars($_GET['email']));?>">
                 <div class="error" id="emailError"></div>
             </div>
             <div class="fieldContainer">
                 <label for="password1">Heslo: <span class="required">*</span></label>
-                <input type="password" id="password1" name="password1">
+                <input type="password" id="password1" name="password1" value="<?php if(isset($_GET['password1'])) echo(htmlspecialchars($_GET['password1']));?>">
                 <div class="error" id="password1Error"></div>
             </div>
             <div class="fieldContainer">
                 <label for="password2">Heslo znovu: <span class="required">*</span></label>
-                <input type="password" id="password2" name="password2">
+                <input type="password" id="password2" name="password2" value="<?php if(isset($_GET['password2'])) echo(htmlspecialchars($_GET['password2']));?>">
                 <div class="error" id="password2Error"></div>
             </div>
             <div class="fieldContainer">
                 <button type="submit" id="submitButton">Odeslat</button>
             </div>
             <div id="authSwitch">Máte už účet? <a href="./login.php">Přihlašte se</a></div>
-            <div id="error"></div>
+            <div id="error"><?php if(isset($_GET['error'])) echo(htmlspecialchars($_GET['error']));?></div>
         </form>
     </main>
 </body>
