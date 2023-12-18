@@ -1,5 +1,20 @@
 <?php
-   
+   function formValid() {
+    $error = "";
+    $valid = true;
+    if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password1"]) && isset($_POST["password2"])) {
+        $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $valid = false;
+            $error .= "Zadali jste neplatný email. ";
+        }
+        //finish with other form inputs
+    }
+    else {
+        $valid = false;
+        return $valid;
+    }
+   }
 
 
    if (isset($_POST["username"]) &&
