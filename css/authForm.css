@@ -70,3 +70,7 @@ input {
     padding:0.3rem 0;
     position: absolute;
 }
+
+#authSwitch {
+    font-size: 1.1em;
+}

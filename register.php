@@ -37,6 +37,7 @@
             <div class="fieldContainer">
                 <button type="submit" id="submitButton">Odeslat</button>
             </div>
+            <div id="authSwitch">Máte už účet? <a href="./login.php">Přihlašte se</a></div>
         </form>
     </main>
 </body>
