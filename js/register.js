@@ -9,10 +9,27 @@ const password1Error = document.getElementById("password1Error")
 const password2Error = document.getElementById("password2Error")
 // Set constants of needed tags so I dont have to use getElementById later
 
-function validateUsername() {
-    return {valid:true}
-    //isnt empty, check if its already taken
+async function validateUsername() {
+    const username = usernameTag.value
+    if (username == "") {return {valid: false, error:"Uživatelské jméno nesmí být prázdné"}}
+    const response = await fetch("./userExists.php?username=" + username)
+    const result = await response.text()
+    if (result == "true") {
+        return {valid:false, error:"Uživatel s takovým jménem už existuje."}
+    }
+    else if (result == "false") {
+        return {valid:true, error:""}
+    }
+    else { //Else happens in case of a database error
+        return {valid:false, error:"Stala se chyba na serveru."}
+    }
 }
+
+usernameTag.addEventListener("blur", async () => {
+    const { error } = await validateUsername() //returns a promise so we have to await it
+    usernameError.innerHTML = error
+    //error je prázdný string, pokud chyba není
+})
 
 function validateEmail() {
     const email = emailTag.value
