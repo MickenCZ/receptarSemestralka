@@ -2,6 +2,7 @@
 session_start();
 if (isset($_SESSION['loggedin'])) {
     header("Location: index.php");
+    die();
 }
 
 
@@ -52,6 +53,7 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
 
     if (!$valid) {
         header("Location: "."register.php?error=$error&username=$username&email=$email");
+        die();
     }
     else {
         //goals - create user in users.json, create session, redirect to index.php
@@ -69,6 +71,7 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
         //created session
 
         header("Location: index.php");
+        die();
         //redirected to index.php
         
     }

@@ -2,6 +2,7 @@
 session_start();
 if (isset($_SESSION['loggedin'])) {
     header("Location: index.php");
+    die();
 }
 
 if (isset($_POST["username"]) && isset($_POST["password1"])) {
@@ -29,6 +30,7 @@ if (isset($_POST["username"]) && isset($_POST["password1"])) {
 
     if (!$valid) {
         header("Location: "."login.php?error=$error&username=$username");
+        die();
     }
     else {
         //main login logic
@@ -39,6 +41,7 @@ if (isset($_POST["username"]) && isset($_POST["password1"])) {
         //created session
 
         header("Location: index.php");
+        die();
         //redirected to index.php
     }
 }
