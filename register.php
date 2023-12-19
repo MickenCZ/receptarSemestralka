@@ -1,32 +1,56 @@
 <?php
-   function formValid() {
+if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password1"]) && isset($_POST["password2"])) {
     $error = "";
     $valid = true;
-    if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password1"]) && isset($_POST["password2"])) {
-        $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $password1 = $_POST["password1"];
+    $password2 = $_POST["password2"];
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL) && $email != "") {
+        $valid = false;
+        $error .= "Zadali jste neplatný email. ";
+    }
+    if (strlen($password1) < 8) {
+        $valid = false;
+        $error .= "Heslo má mít alespoň 8 znaků. ";
+    }
+    if (strtolower($password1) === $password1 || strtoupper($password1) == $password1) {
+        $valid = false;
+        $error .= "Heslo má mít velká i malá písmena. ";
+    }
+    if (!preg_match("/\d/", $password1)) {
+        $valid = false;
+        $error .= "Heslo musí obsahovat číslo. ";
+    }
+    if ($password1 != $_POST["password2"]) {
+        $valid = false;
+        $error .= "Hesla se musí shodovat. ";
+    }
+    if (strlen($username) <= 0) {
+        $valid = false;
+        $error .= "Uživatelské jméno je moc krátké. ";
+    }
+    if (is_readable("users.json")) {
+        $users = json_decode(file_get_contents("users.json"), true);
+        if (array_key_exists($_POST["username"], $users)) {
             $valid = false;
-            $error .= "Zadali jste neplatný email. ";
+            $error .= "Uživatel s takovým jménem už existuje. ";
         }
-        //finish with other form inputs
     }
     else {
         $valid = false;
-        return $valid;
+        $error .= "Stala se chyba serveru. ";
     }
-   }
 
 
-   if (isset($_POST["username"]) &&
-   isset($_POST["email"]) &&
-   isset($_POST["password1"]) &&
-   isset($_POST["password2"])
-   ) {
-
-   }
-   else {
-
-   }
+    if (!$valid) {
+        header("Location: "."register.php?error=$error&username=$username&email=$email");
+    }
+    else {
+        
+    }
+}
+   
 ?>
 
 <!DOCTYPE html>
@@ -47,12 +71,12 @@
         <form action="register.php" method="POST">
             <div class="fieldContainer">
                 <label for="username">Uživatelské jméno: <span class="required">*</span></label>
-                <input type="text" id="username" name="username" value="<?php if(isset($_GET['username'])) echo(htmlspecialchars($_GET['username']));?>">
+                <input type="text" id="username" name="username" autocomplete="on" value="<?php if(isset($_GET['username'])) echo(htmlspecialchars($_GET['username']));?>">
                 <div class="error" id="usernameError"></div>
             </div>
             <div class="fieldContainer">
                 <label for="email">Email: </label>
-                <input type="email" id="email" name="email" value="<?php if(isset($_GET['email'])) echo(htmlspecialchars($_GET['email']));?>">
+                <input type="email" id="email" name="email" autocomplete="on" value="<?php if(isset($_GET['email'])) echo(htmlspecialchars($_GET['email']));?>">
                 <div class="error" id="emailError"></div>
             </div>
             <div class="fieldContainer">
@@ -69,7 +93,7 @@
                 <button type="submit" id="submitButton">Odeslat</button>
             </div>
             <div id="authSwitch">Máte už účet? <a href="./login.php">Přihlašte se</a></div>
-            <div id="error"><?php if(isset($_GET['error'])) echo(htmlspecialchars($_GET['error']));?></div>
+            <p id="error"><?php if(isset($_GET['error'])) echo(htmlspecialchars($_GET['error']));?></p>
         </form>
     </main>
 </body>

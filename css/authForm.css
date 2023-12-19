@@ -23,6 +23,7 @@ form {
 #heading {
     font-size: 2em;
     margin-bottom: 1.25rem;
+    margin-top:1.25rem;
 }
 
 .fieldContainer {
@@ -79,4 +80,5 @@ input {
     color: red;
     font-size: 1.1em;
     margin-top: 10px;
+    max-width: 450px;
 }
