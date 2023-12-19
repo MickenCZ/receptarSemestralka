@@ -1,3 +1,45 @@
+<?php
+if (isset($_POST["username"]) && isset($_POST["password1"])) {
+    $valid = true;
+    $error = "";
+    $username = $_POST["username"];
+    $password = $_POST["password1"];
+    if (is_readable("users.json")) {
+        $users = json_decode(file_get_contents("users.json"), true);
+        if (!array_key_exists($username, $users)) {
+            $valid = false;
+            $error .= "Uživatel s takovým jménem neexistuje. ";
+        }
+        else {
+            if (!password_verify($password, $users[$username]["password"])) {
+                $valid = false;
+                $error .= "Vaše heslo je špatně. ";
+            }
+        }
+    }
+    else {
+        $valid = false;
+        $error .= "Stala se chyba serveru";
+    }
+
+    if (!$valid) {
+        header("Location: "."login.php?error=$error&username=$username");
+    }
+    else {
+        //main login logic
+        session_start();
+        $_SESSION['loggedin'] = true;
+        $_SESSION['username'] = $username;
+        $_SESSION['email'] = $users[$username]["email"];
+        //created session
+
+        header("Location: index.php");
+        //redirected to index.php
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
