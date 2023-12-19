@@ -55,8 +55,15 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
         file_put_contents("users.json", json_encode($users));
         //created user in users.json
 
-        
+        session_start();
+        $_SESSION['loggedin'] = true;
+        $_SESSION['username'] = $username;
+        $_SESSION['email'] = $email;
+        //created session
 
+        header("Location: index.php");
+        //redirected to index.php
+        
     }
 }
    
