@@ -1,4 +1,4 @@
-<?php
+<?php //If all fields are set, validate inputs, if not valid, send back prefilled form and errors, if valid, register user
 if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password1"]) && isset($_POST["password2"])) {
     $error = "";
     $valid = true;
@@ -47,7 +47,16 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
         header("Location: "."register.php?error=$error&username=$username&email=$email");
     }
     else {
+        //goals - create user in users.json, create session, redirect to index.php
+        $hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
+        $user = array("email"=>$email, "password"=>$hashedPassword);
+        $users = json_decode(file_get_contents("users.json"), true); //I know its readable, checked before
+        $users[$username] = $user; //I checked user already doesnt exist, key is username value is assoc array
+        file_put_contents("users.json", json_encode($users));
+        //created user in users.json
+
         
+
     }
 }
    

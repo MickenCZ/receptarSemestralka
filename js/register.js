@@ -89,8 +89,9 @@ password2Tag.addEventListener("blur", () => {
 
 
 
-formTag.addEventListener("submit", e => {
-    if (!(validateEmail().valid && validatePassword1().valid && validatePassword2().valid && validateUsername().valid)) {
+formTag.addEventListener("submit", async e => {
+    const usernameValid = await validateUsername()
+    if (!(validateEmail().valid && validatePassword1().valid && validatePassword2().valid && usernameValid.valid)) {
         e.preventDefault()
     }
 })
