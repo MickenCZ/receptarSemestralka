@@ -1,4 +1,11 @@
-<?php //If all fields are set, validate inputs, if not valid, send back prefilled form and errors, if valid, register user
+<?php 
+session_start();
+if (isset($_SESSION['loggedin'])) {
+    header("Location: index.php");
+}
+
+
+//If all fields are set, validate inputs, if not valid, send back prefilled form and errors, if valid, register user
 if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password1"]) && isset($_POST["password2"])) {
     $error = "";
     $valid = true;
@@ -55,7 +62,7 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
         file_put_contents("users.json", json_encode($users));
         //created user in users.json
 
-        session_start();
+        //session_start(); already done above
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
         $_SESSION['email'] = $email;

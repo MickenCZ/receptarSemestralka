@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (isset($_SESSION['loggedin'])) {
+    header("Location: index.php");
+}
+
 if (isset($_POST["username"]) && isset($_POST["password1"])) {
     $valid = true;
     $error = "";
@@ -27,7 +32,7 @@ if (isset($_POST["username"]) && isset($_POST["password1"])) {
     }
     else {
         //main login logic
-        session_start();
+        //session_start(); already done above
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
         $_SESSION['email'] = $users[$username]["email"];
