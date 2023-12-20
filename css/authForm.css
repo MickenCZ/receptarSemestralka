@@ -76,3 +76,9 @@ input {
     margin-top: 10px;
     max-width: 450px;
 }
+
+.info {
+    color:black;
+    font-size: 1.1em;
+    margin-bottom: 0.2rem;
+}

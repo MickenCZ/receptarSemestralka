@@ -14,6 +14,7 @@ async function validateUsername() {
     if (username == "") {return {valid: false, error:"Uživatelské jméno nesmí být prázdné"}}
     const response = await fetch("./userExists.php?username=" + username)
     const result = await response.text()
+    usernameTag.dataset.exists = result
     if (result == "true") {
         return {valid:false, error:"Uživatel s takovým jménem už existuje."}
     }
@@ -89,9 +90,8 @@ password2Tag.addEventListener("blur", () => {
 
 
 
-formTag.addEventListener("submit", async e => {
-    const usernameValid = await validateUsername()
-    if (!(validateEmail().valid && validatePassword1().valid && validatePassword2().valid && usernameValid.valid)) {
+formTag.addEventListener("submit", e => {
+    if (!(validateEmail().valid && validatePassword1().valid && validatePassword2().valid && usernameTag.dataset.exists == "false")) {
         e.preventDefault()
     }
 })

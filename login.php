@@ -77,6 +77,7 @@ if (isset($_POST["username"]) && isset($_POST["password1"])) {
             <div class="fieldContainer">
                 <button type="submit" id="submitButton">Odeslat</button>
             </div>
+            <p class="info">Políčka označená hvědčikou jsou povinná.</p>
             <div id="authSwitch">Nemáte ještě účet? <a href="./register.php">Zaregistrujte se</a></div>
             <div id="error"><?php if(isset($_GET['error'])) echo(htmlspecialchars($_GET['error']));?></div>
         </form>
