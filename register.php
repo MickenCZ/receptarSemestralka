@@ -85,7 +85,7 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrace</title>
-    <link rel="stylesheet" href="./css/authForm.css">
+    <link rel="stylesheet" href="./css/form.css">
     <link rel="stylesheet" href="./css/header.css">
     <script src="./js/register.js" defer></script>
     <link rel="shortcut icon" href="./images/cookbook.svg" type="image/x-icon">
