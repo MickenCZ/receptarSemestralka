@@ -16,8 +16,9 @@ if (!isset($_SESSION['loggedin'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Přidat recept</title>
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="./css/form.css">
+    <link rel="stylesheet" href="css/form.css">
     <link rel="stylesheet" href="css/addRecipe.css">
+    <script src="js/addRecipe.js" defer></script>
 </head>
 <body>
     <?php 
