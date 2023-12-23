@@ -38,8 +38,27 @@ textarea {
 
 #tags {
     font-size: 1.1em;
+    margin-top:1.7rem;
 }
 
 #ingredientsInfo {
     position: absolute;
+    max-width: 35rem;
+}
+
+label[for=description] {
+    margin-top:1rem;
+}
+
+#description {
+    margin-bottom: 1rem;
+}
+
+#descriptionError {
+    margin-top:9rem;
+    position: absolute;
+}
+
+#submitButton {
+    margin-top:1rem;
 }

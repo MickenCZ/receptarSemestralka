@@ -98,7 +98,7 @@ formTag.addEventListener("submit", e => {
 
 
 /*
-The idea is to create functions that start the word validate, 
+The idea is to create functions that start with the word validate, 
 which return an object which tells you if the input is valid, and if not, an error. 
 These functions are run on blur, errors are displayed if present.
 The reason for this architecture is so that I can check all functions on submit,
