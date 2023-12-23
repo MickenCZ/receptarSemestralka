@@ -35,6 +35,8 @@ usernameTag.addEventListener("blur", () => {
 
 formTag.addEventListener("submit", e => {
     if (!(validateUsername().valid && validatePassword1().valid)) {
+        usernameError.innerHTML = validateUsername().error
+        password1Error.innerHTML = validatePassword1().error
         e.preventDefault()
     }
 })

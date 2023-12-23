@@ -92,6 +92,10 @@ password2Tag.addEventListener("blur", () => {
 
 formTag.addEventListener("submit", e => {
     if (!(validateEmail().valid && validatePassword1().valid && validatePassword2().valid && usernameTag.dataset.exists == "false")) {
+        usernameError.innerHTML = usernameTag.value.length == 0 ? "Uživatelské jméno nesmí být prázdné" : ""
+        emailError.innerHTML = validateEmail().error
+        password1Error.innerHTML = validatePassword1().error
+        password2Error.innerHTML = validatePassword2().error
         e.preventDefault()
     }
 })
