@@ -75,7 +75,7 @@ if (isset($_POST["recipeName"]) && isset($_POST["ingredients"]) && isset($_POST[
         $uploadFilePath = "./images/" . $recipeID;
         move_uploaded_file($_FILES['image']['tmp_name'], $uploadFilePath);
 
-        $recipes[$recipeID] = array("recipeName" => $recipeName, "description" => $description, "ingredients" => $ingredientsArray);
+        $recipes[$recipeID] = array("recipeName" => $recipeName, "description" => $description, "ingredients" => $ingredientsArray, "author"=>$_SESSION["username"]);
         //image is in images/$recipeID
         
         file_put_contents("recipes.json", json_encode($recipes));
