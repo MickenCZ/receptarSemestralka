@@ -72,10 +72,14 @@ if (isset($_POST["recipeName"]) && isset($_POST["ingredients"]) && isset($_POST[
         $ingredientsArray = array_filter($ingredientsArray, function($item) {return $item !== "";}); //remove empty items caused by comma at end
         //now we have a valid array of ingredients
 
+        $uploadFilePath = "./images/" . $recipeID;
+        move_uploaded_file($_FILES['image']['tmp_name'], $uploadFilePath);
 
         $recipes[$recipeID] = array("recipeName" => $recipeName, "description" => $description, "ingredients" => $ingredientsArray);
         //image is in images/$recipeID
         
+        file_put_contents("recipes.json", json_encode($recipes));
+        //now that everything is done, put the updated recipes assocArray into the recipes.json file.
     }
 }
 
