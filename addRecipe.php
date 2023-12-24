@@ -20,7 +20,9 @@ if (isset($_POST["recipeName"]) && isset($_POST["ingredients"]) && isset($_POST[
     foreach ($checkBoxValues as $value) {
         if (isset($_POST[$value])) {
             $checkBoxURL .= "&".$value."=checked";
-        } //For each checked checkbox, it appends for example &breakfast=checked to the URL as get parameters, which is then read by $_GET["breakfast"]
+        }
+    /*For each checked checkbox, it appends for example &breakfast=checked to the URL as get parameters,
+    which is then read by $_GET["breakfast"]. Used for prefilling*/
     }
 
     if (strlen($recipeName) < 3) {
@@ -43,12 +45,36 @@ if (isset($_POST["recipeName"]) && isset($_POST["ingredients"]) && isset($_POST[
         $valid = false;
         $error .= "Stala se chyba s obrázkem. ";
     }
+    if (!in_array(exif_imagetype($image["tmp_name"]), [IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_WEBP])) {
+        $valid = false;
+        $error .= "Nenahráli jste obrázek. Podporujeme formáty PNG, JPEG, WEBP. ";
+    }
+    if (!is_readable("recipes.json")) {
+        $valid = false;
+        $error .= "Stala se chyba serveru. ";
+    }
 
     if (!$valid) {
         header("Location: "."addRecipe.php?error=$error&recipeName=$recipeName&ingredients=$ingredients&description=$description$checkBoxURL");
         die();
     }
     else {
+        //goals - read recipes.json, parse to a recipe assocArray, update recipes.json
+        //Know its readable, checked before
+        $recipes = json_decode(file_get_contents("recipes.json"), true);
+        $recipeID = bin2hex(random_bytes(10));
+        while (isset($recipes[$recipeID])) {
+            $recipeID = bin2hex(random_bytes(10));
+        }//Generate a unique Id. If it already has an entry, generate another one. Works similar to youtube video ids in urls.
+
+        $ingredientsArray = explode(",", $ingredients); //ingredients are separated by commas in an array
+        $ingredientsArray = array_map('trim', $ingredientsArray); //trim the space at end or start of each ingredient, to prevent asd, qwe => ["asd", " qwe"]
+        $ingredientsArray = array_filter($ingredientsArray, function($item) {return $item !== "";}); //remove empty items caused by comma at end
+        //now we have a valid array of ingredients
+
+
+        $recipes[$recipeID] = array("recipeName" => $recipeName, "description" => $description, "ingredients" => $ingredientsArray);
+        //image is in images/$recipeID
         
     }
 }
