@@ -34,7 +34,9 @@ if (isset($_POST['logout'])) {
         <div id="container">
             <div id="username" class="message">Ahoj, <span id="highlight"><?php echo htmlspecialchars($_SESSION['username']); ?></span>, přeji vám hezký den! Máte náladu si něco uvařit?</div>
             <p class="message">Momentálně jsou trendy štrůdly, husté polévky a houbové omáčky. Máte na něco chuť? Podívejte se na <a href="./index.php">recepty našich uživatelů</a>.</p>
-            <div id="email" class="message">Váš email: <?php echo htmlspecialchars($_SESSION['email']); ?></div>
+            <?php if ($_SESSION['email'] != "") {
+                echo('<div id="email" class="message">Váš email: '.htmlspecialchars($_SESSION["email"]).'</div>');
+            }?>
             <form method="POST" action="profile.php">
             <button type="submit" name="logout" value="logout">Odhlásit se</button>
         </form>
