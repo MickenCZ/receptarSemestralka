@@ -5,8 +5,56 @@ if (!isset($_SESSION['loggedin'])) {
     die();
 }
 
-//PŘEDVYPLNĚNÍ CHECKBOXŮ
-//blur ingredience vypsání pod to
+//If all fields are set, validate inputs, if not valid, send back prefilled form and errors, if valid, register user
+
+if (isset($_POST["recipeName"]) && isset($_POST["ingredients"]) && isset($_POST["description"]) && isset($_FILES["image"])) {
+    $error = "";
+    $valid = true;
+    $recipeName = $_POST["recipeName"];
+    $ingredients = $_POST["ingredients"];
+    $description = $_POST["description"];
+    $image = $_FILES["image"];
+    //checkbox prefill
+    $checkBoxValues = ["breakfast", "lunch", "dinner", "vegan", "glutenFree"];
+    $checkBoxURL = "";
+    foreach ($checkBoxValues as $value) {
+        if (isset($_POST[$value])) {
+            $checkBoxURL .= "&".$value."=checked";
+        } //For each checked checkbox, it appends for example &breakfast=checked to the URL as get parameters, which is then read by $_GET["breakfast"]
+    }
+
+    if (strlen($recipeName) < 3) {
+        $valid = false;
+        $error .= "Jméno receptu je moc krátké. ";
+    }
+    if (strlen($ingredients) == 0) {
+        $valid = false;
+        $error .= "Ingredience nesmí být prázdné. ";
+    }
+    if (strlen($description) <= 20) {
+        $valid = false;
+        $error .= "Popis postupu je moc krátký. ";
+    }
+    if ($_FILES["image"]["error"] == 4) {
+        $valid = false;
+        $error .= "Nebyl nahrán obrázek. ";
+    }
+    else if ($_FILES["image"]["error"] != 0) {
+        $valid = false;
+        $error .= "Stala se chyba s obrázkem. ";
+    }
+
+    if (!$valid) {
+        header("Location: "."addRecipe.php?error=$error&recipeName=$recipeName&ingredients=$ingredients&description=$description$checkBoxURL");
+        die();
+    }
+    else {
+        
+    }
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -36,19 +84,19 @@ if (!isset($_SESSION['loggedin'])) {
                 <div id="tags">Tagy:</div>
                 <div class="checkboxGroup">
                     <label class="checkboxItem"  id="first">
-                      <input type="checkbox" name="breakfast">Snídaně
+                      <input type="checkbox" name="breakfast" <?php if(isset($_GET['breakfast'])) echo(htmlspecialchars($_GET['breakfast']));?>>Snídaně
                     </label>
                     <label class="checkboxItem">
-                      <input type="checkbox" name="lunch">Oběd
+                      <input type="checkbox" name="lunch" <?php if(isset($_GET['lunch'])) echo(htmlspecialchars($_GET['lunch']));?>>Oběd
                     </label>
                     <label class="checkboxItem">
-                      <input type="checkbox" name="dinner">Večeře
+                      <input type="checkbox" name="dinner" <?php if(isset($_GET['dinner'])) echo(htmlspecialchars($_GET['dinner']));?>>Večeře
                     </label>
                     <label class="checkboxItem">
-                      <input type="checkbox" name="vegan">Veganské
+                      <input type="checkbox" name="vegan" <?php if(isset($_GET['vegan'])) echo(htmlspecialchars($_GET['vegan']));?>>Veganské
                     </label>
                     <label class="checkboxItem">
-                      <input type="checkbox" name="glutenFree">Bez Lepku
+                      <input type="checkbox" name="glutenFree" <?php if(isset($_GET['glutenFree'])) echo(htmlspecialchars($_GET['glutenFree']));?>>Bez Lepku
                     </label>
                 </div>
             </div>
@@ -61,7 +109,7 @@ if (!isset($_SESSION['loggedin'])) {
             </div>
             <div class="fieldContainer" id="textAreaContainer">
                 <label for="description">Napište popis postupu: <span class="required">*</span></label>
-                <textarea rows="4" id="description" name="description" value="<?php if(isset($_GET['description'])) echo(htmlspecialchars($_GET['description']));?>"></textarea>
+                <textarea rows="4" id="description" name="description"><?php if(isset($_GET['description'])) echo(htmlspecialchars($_GET['description']));?></textarea>
                 <div class="error" id="descriptionError"></div>
             </div>
             <div class="fieldContainer">

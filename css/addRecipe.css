@@ -62,3 +62,7 @@ label[for=description] {
 #submitButton {
     margin-top:1rem;
 }
+
+#heading {
+    padding-top:1.5rem;
+}
