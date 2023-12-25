@@ -138,7 +138,7 @@ if (isset($_POST["recipeName"]) && isset($_POST["ingredients"]) && isset($_POST[
             </div>
             </div>
             <div class="fieldContainer" id="textAreaContainer">
-                <label for="description">Napište popis postupu: <span class="required">*</span></label>
+                <label for="description">Napište postup přípravy: <span class="required">*</span></label>
                 <textarea rows="4" id="description" name="description"><?php if(isset($_GET['description'])) echo(htmlspecialchars($_GET['description']));?></textarea>
                 <div class="error" id="descriptionError"></div>
             </div>

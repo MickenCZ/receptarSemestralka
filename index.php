@@ -20,5 +20,10 @@ else {
     <?php 
     include "header.php";
     ?>
+    <main>
+        <section id="recipes">
+            
+        </section>
+    </main>
 </body>
 </html>
