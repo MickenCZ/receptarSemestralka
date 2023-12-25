@@ -20,6 +20,7 @@ main {
 #image {
     max-width: 100%;
     margin-bottom: 0.6rem;
+    
 }
 
 #recipeName {
@@ -28,7 +29,7 @@ main {
 
 #author {
     color: #555;
-    margin-bottom: 1.25rem;
+   
 }
 
 #ingredients {

@@ -75,7 +75,21 @@ if (isset($_POST["recipeName"]) && isset($_POST["ingredients"]) && isset($_POST[
         $uploadFilePath = "./images/" . $recipeID;
         move_uploaded_file($_FILES['image']['tmp_name'], $uploadFilePath);
 
-        $recipes[$recipeID] = array("recipeName" => $recipeName, "description" => $description, "ingredients" => $ingredientsArray, "author"=>$_SESSION["username"]);
+        $tags = [];
+        $dict = array("breakfast"=>"snídaně", "lunch"=>"oběd", "dinner"=>"večeře", "vegan"=>"veganské","glutenFree" => "bez lepku");
+        foreach ($checkBoxValues as $value) {
+            if (isset($_POST[$value])) {
+                array_push($tags, $dict[$value]);
+            }
+        }
+        //parsing the tags
+
+        $recipes[$recipeID] = array(
+        "recipeName" => $recipeName, 
+        "description" => $description, 
+        "ingredients" => $ingredientsArray, 
+        "author"=>$_SESSION["username"], 
+        "tags"=>$tags);
         //image is in images/$recipeID
         
         file_put_contents("recipes.json", json_encode($recipes));

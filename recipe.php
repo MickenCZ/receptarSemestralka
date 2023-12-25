@@ -38,7 +38,10 @@
     <section id="recipe">
       <img src="<?php echo("./images/$recipeid"); ?>" alt="Obrázek receptu" id="image" height="320rem">
       <h2 id="recipeName"><?php echo htmlspecialchars($recipe["recipeName"]); ?></h2>
-      <p id="author">Autor: <?php echo htmlspecialchars($recipe["author"]); ?></p>
+      <p id="author">
+        <div>Autor: <?php echo htmlspecialchars($recipe["author"]); ?></div>
+        <div>Tagy: <?php echo htmlspecialchars(implode(", ", $recipe["tags"])); ?></div>
+    </p>
       <h3>Ingredience:</h3>
       <ul id="ingredients">
         <?php 
@@ -56,3 +59,5 @@
   </main>
 </body>
 </html>
+
+<!--TAAAAAGS!!!!!!!!!!!->
