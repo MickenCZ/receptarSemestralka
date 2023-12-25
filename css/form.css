@@ -5,6 +5,7 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: #f4f4f4;
 }/*Main is consisting of the whole page and it's there to position elements correctly*/
 
 form {
