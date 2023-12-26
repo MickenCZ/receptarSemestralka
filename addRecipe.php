@@ -76,10 +76,9 @@ if (isset($_POST["recipeName"]) && isset($_POST["ingredients"]) && isset($_POST[
         move_uploaded_file($_FILES['image']['tmp_name'], $uploadFilePath);
 
         $tags = [];
-        $dict = array("breakfast"=>"snídaně", "lunch"=>"oběd", "dinner"=>"večeře", "vegan"=>"veganské","glutenFree" => "bez lepku");
         foreach ($checkBoxValues as $value) {
             if (isset($_POST[$value])) {
-                array_push($tags, $dict[$value]);
+                array_push($tags, $value);
             }
         }
         //parsing the tags

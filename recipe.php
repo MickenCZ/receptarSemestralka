@@ -1,7 +1,7 @@
 <?php
 //If statements structured like guard clauses
     if (!isset($_GET["recipeid"])) {//Each recipe is identified with an ID, if it doesnt have it, url has been tampered with
-        header("Location: index.php");
+        header("Location: error.php?code=404");
         die();
     }
     if (!is_readable("recipes.json")) {
@@ -11,7 +11,7 @@
 
     $recipes = json_decode(file_get_contents("recipes.json"), true);
     if (!$recipes[$_GET["recipeid"]]) {
-        echo("Recept s takovým ID neexistuje. ");
+        header("Location: error.php?code=404");
         die();
     }
     else {

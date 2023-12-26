@@ -1,11 +1,39 @@
 <?php
-/*session_start();
-if (isset($_SESSION['loggedin'])) {
-echo("Jste přihlášen");
+function compareRecipeNames($a, $b) {
+    return strcasecmp($a['recipeName'], $b['recipeName']);
+}//Case-incensitive compare, returns -1 or 1 based on which is earlier in the alphabet.
+
+if (is_readable("recipes.json")) {
+    $recipes = json_decode(file_get_contents("recipes.json"), true);
+    $possibleFilters = ["breakfast", "lunch", "dinner", "vegan", "glutenFree"];
+    $wantedFilters = [];
+    foreach ($possibleFilters as $filter) {
+        if (isset($_GET[$filter])) {
+            array_push($wantedFilters, $filter);
+            //Only checked checkboxes are going to be sent as get parameters, so if I check if they are set, I know which ones were checked.
+        }
+    }//now wanted filters has all checked filters
+
+    $recipes = array_filter($recipes, function ($recipe) use ($wantedFilters) {
+        return !array_diff($wantedFilters, $recipe["tags"]);
+    });
+    //removes all recipes that don't adhere to filters
+
+
+    usort($recipes, 'compareRecipeNames'); //Sorts the array alphabetically, in place
+    if (!isset($_GET["sorting"]) || $_GET["sorting"] == "alphabetic") {
+        //do it alphabetically
+    }
+    else if ($_GET["sorting"] == "reverseAlphabetic") {
+        //do it reverse
+        $recipes = array_reverse($recipes);
+    }
+    var_dump($recipes);
 }
 else {
-    echo("nejstep řihlášen");
-}*/
+    header("Location: error.php?code=500");
+    die();
+}
 
 
 ?>
