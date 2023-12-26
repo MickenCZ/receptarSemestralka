@@ -2,4 +2,99 @@ main {
     background-color: #f4f4f4;
     width: 100vw;
     height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 3rem;
+}
+
+a {
+    text-decoration: none;
+    color:black; /*Reverting default styles for links*/
+}
+
+#recipes {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap:3rem;
+    
+}
+
+.card {
+    background-color: #fff;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 20rem;
+    text-align: center;
+    height: 24rem;
+}
+
+.card:hover {
+    background-color: #fbfbfb;
+}
+
+.title {
+    font-size: 1.5em;
+    margin-bottom: 0.7rem;
+}
+
+.image {
+    border-radius: 3%;
+}
+
+.description {
+    word-break: break-all;
+    overflow: hidden;
+    max-height: 2.1rem;
+}
+
+.tags {
+    margin-top:0.5rem;
+}
+
+.ingredients {
+    margin:0.5rem;
+}
+
+input[type=checkbox] {
+    margin-left:2rem;
+}
+
+label {
+    font-size: 1.1em;
+}
+
+#filters {
+    margin-left: 2em;
+}
+
+#submitButton {
+    margin-left:2rem;
+    background-color: #4caf50;
+    color: #fff;
+    padding: 0.625rem 0.9rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+#submitButton:hover {
+    background-color: #3c8d41;
+}
+
+#sorting {
+    padding: 0.625rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+#controls {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
 }
