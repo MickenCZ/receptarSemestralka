@@ -1,7 +1,7 @@
 main {
     background-color: #f4f4f4;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -19,7 +19,7 @@ a {
     flex-wrap: wrap;
     align-items: flex-start;
     gap:3rem;
-    
+    margin-bottom:3rem;
 }
 
 .card {
@@ -38,7 +38,6 @@ a {
 
 .title {
     font-size: 1.5em;
-    margin-bottom: 0.7rem;
 }
 
 .image {
@@ -97,4 +96,9 @@ label {
 #controls {
     margin-top: 3rem;
     margin-bottom: 1rem;
+}
+
+.author {
+    color:darkslategray;
+    margin-bottom:1rem;
 }

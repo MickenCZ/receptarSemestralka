@@ -5,6 +5,10 @@ function compareRecipeNames($a, $b) {
 
 if (is_readable("recipes.json")) {
     $recipes = json_decode(file_get_contents("recipes.json"), true);
+    foreach (array_keys($recipes) as $key) {
+        $recipes[$key]["key"] = $key; // "sdfjkkey" => recipeName=asd, tags=asd..           to      "sdfjkkey" => recipeName=asd, key=sdfjkkey, tags=asd..
+    }//recipes dont have the key property on them, its only the key of the recipes array. It will get lost through later code, so we have to save it.
+
     $possibleFilters = ["breakfast", "lunch", "dinner", "vegan", "glutenFree"];
     $wantedFilters = [];
     foreach ($possibleFilters as $filter) {
@@ -21,19 +25,26 @@ if (is_readable("recipes.json")) {
 
 
     usort($recipes, 'compareRecipeNames'); //Sorts the array alphabetically, in place
-    if (!isset($_GET["sorting"]) || $_GET["sorting"] == "alphabetic") {
-        //do it alphabetically
+    if (isset($_GET["sorting"]) && $_GET["sorting"] == "reverseAlphabetic") {
+        $recipes = array_reverse($recipes);//if user wants reverseAlphabetic, we will reverse the array
     }
-    else if ($_GET["sorting"] == "reverseAlphabetic") {
-        //do it reverse
-        $recipes = array_reverse($recipes);
-    }
-    var_dump($recipes);
+
+
+    //Now the recipes associative array is sorted, filtered and loaded into $recipes variable.
+    //We just need a simple dictionary to translate tags from their English names. Done it translate function.
+    $dict = array(
+        "breakfast"=>"snídaně",
+        "lunch"=>"oběd",
+        "dinner"=>"večeře",
+        "vegan"=>"veganské",
+        "glutenFree"=>"bezlepkové"
+    );
 }
 else {
     header("Location: error.php?code=500");
     die();
 }
+
 
 
 ?>
@@ -44,7 +55,7 @@ else {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Váš Receptář</title>
-    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
@@ -72,6 +83,21 @@ else {
             <button type="submit" id="submitButton">Aplikovat</button>
         </form>
         <section id="recipes">
+            <?php
+                foreach ($recipes as $recipe) { ?>
+                <a class="card" href="recipe.php?recipeid=<?php echo($recipe["key"]);?>">
+                    <h3 class="title"><?php echo(htmlspecialchars($recipe["recipeName"]));?></h3>
+                    <div class="author">Autor: <?php echo(htmlspecialchars($recipe["author"]));?></div>
+                    <img src="./images/<?php echo($recipe["key"]);?>" alt="image" width="230rem" class="image">
+                    <div class="tags">Tagy: <em><?php
+                        $translatedTags = array_map(function ($tag) use ($dict) {return $dict[$tag];}, $recipe["tags"]);
+                        echo(htmlspecialchars(implode(", ", $translatedTags)));
+                    ?></em></div>
+                    <div class="ingredients">Ingredience: <?php echo(htmlspecialchars(implode(", ", $recipe["ingredients"])));?></div>
+                    <div class="description"><?php echo(htmlspecialchars($recipe["description"]));?></div>
+                </a>
+                <?php } ?>
+
             <a class="card" href="#">
                 <h3 class="title">Pizza s olovnatými hovna</h3>
                 <img src="./images/c837e1c732f0d5d22258" alt="image" width="230rem" class="image">
