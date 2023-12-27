@@ -97,38 +97,6 @@ else {
                     <div class="description"><?php echo(htmlspecialchars($recipe["description"]));?></div>
                 </a>
                 <?php } ?>
-
-            <a class="card" href="#">
-                <h3 class="title">Pizza s olovnatými hovna</h3>
-                <img src="./images/c837e1c732f0d5d22258" alt="image" width="230rem" class="image">
-                <div class="tags">Tagy: <em>Vega, vegentairna</em></div>
-                <div class="ingredients">Ingredience: Rajčata, sůl, pepř</div>
-                <div class="description">asdasdasdasdsads ssssssssssssssssssssssssss asdaasasasasasasasasasaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaa aaaaa aaaaaasas...</div>
-            </a>
-            <a class="card" href="#">
-                <h3 class="title">Pizza s olovnatými hovna</h3>
-                <img src="./images/c837e1c732f0d5d22258" alt="image" width="230rem" class="image">
-                <div class="tags">Tagy: <em>Vega, vegentairna</em></div>
-                <div class="ingredients">Ingredience: Rajčata, sůl, pepř</div>
-                <div class="description">asdasdasdasdsads ssssssssssssssssssssssssss asdaasasasasasasasasasaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaa aaaaa aaaaaasas...</div>
-            </a>
-            <a class="card" href="#">
-                <h3 class="title">Pizza s olovnatými hovna</h3>
-                <img src="./images/c837e1c732f0d5d22258" alt="image" width="230rem" class="image">
-                <div class="tags">Tagy: <em>Vega, vegentairna</em></div>
-                <div class="ingredients">Ingredience: Rajčata, sůl, pepř</div>
-                <div class="description">asdasdasdasdsads ssssssssssssssssssssssssss asdaasasasasasasasasasaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaa aaaaa aaaaaasas...</div>
-            </a>
-            <a class="card" href="#">
-                <h3 class="title">Pizza s olovnatými hovna</h3>
-                <img src="./images/c837e1c732f0d5d22258" alt="image" width="230rem" class="image">
-                <div class="tags">Tagy: <em>Vega, vegentairna</em></div>
-                <div class="ingredients">Ingredience: Rajčata, sůl, pepř</div>
-                <div class="description">asdasdasdasdsads ssssssssssssssssssssssssss asdaasasasasasasasasasaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaa aaaaa aaaaaasas...</div>
-            </a>
-            
-            
-            
         </section>
     </main>
 </body>

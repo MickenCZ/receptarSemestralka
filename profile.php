@@ -38,7 +38,7 @@ if (isset($_POST['logout'])) {
                 echo('<div id="email" class="message">Váš email: '.htmlspecialchars($_SESSION["email"]).'</div>');
             }?>
             <form method="POST" action="profile.php">
-            <button type="submit" name="logout" value="logout">Odhlásit se</button>
+            <button type="submit" name="logout" value="logout" class="redButton">Odhlásit se</button>
         </form>
         </div>
     </main>
