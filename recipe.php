@@ -28,7 +28,16 @@
         "glutenFree"=>"bezlepkové"
     ); //for translating tags
 
-
+    //comments logic
+    if (!is_readable("comments.json")) {
+        header("Location: error.php?code=500");
+        die();
+    }
+    else {
+        $allComments = json_decode(file_get_contents("comments.json"), true);
+        $comments = $allComments[$recipeid];
+        
+    }
 
 ?>
 
@@ -67,12 +76,12 @@
       <h3>Postup přípravy:</h3>
       <p id="description"><?php echo htmlspecialchars($recipe["description"]); ?></p>
 
-        <h3>Komentáře:</h3>
-        <form action="POST" action="recipe.php">
+        <h3>Komentáře: <?php if (!isset($_SESSION['loggedin'])) {echo('(Pro komentování je nutné mít účet)');}?></h3>
+        <form method="POST" action="saveComment.php" <?php if (!isset($_SESSION['loggedin'])) {echo('class="hidden"');}?>>
             <label for="comment">Vyjadřete se k receptu:</label>
             <div class="flexColumn">
+                <input type="hidden" name="recipeid" value="<?php echo($recipeid); ?>">
                 <textarea name="comment" id="comment" rows="3"></textarea>
-
                 <div id="ratingContainer">
                 <select name="rating" id="rating">
                     <option value="1">1</option>
@@ -88,15 +97,17 @@
             </div>
         </form>
         <div class="comments">
-            <div class="comment">
-                <div class="commentBody">
-                    <div class="author">Angry man 5★</div>
-                    <div class="commentText">adsdsdsdsdsdsds            adsasddddddddd dsaaaaaaaaaa adsadsadsadsadsads sadsads sadsads sadsads sadsads</div>
-                    <button class="redButton">Smazat</button>
-                    <button class="blueButton">Upravit</button>
+            <?php 
+            foreach ($comments as $comment) { ?>
+                <div class="comment">
+                    <div class="commentBody">
+                        <div class="author"><?php echo(htmlspecialchars($comment["author"]." ".$comment["rating"]."★")); ?></div>
+                        <div class="commentText"><?php echo(htmlspecialchars($comment["comment"])); ?></div>
+                        <button class="redButton">Smazat</button>
+                        <button class="blueButton">Upravit</button>
+                    </div>
                 </div>
-            </div>
-            
+            <?php } ?>
             
         </div>
       </section>

@@ -22,6 +22,9 @@
                 else if ($code == "500") {
                     echo("<h1>Error: Na serveru se stala kritická chyba</h1>");
                 }
+                else if ($code == "403") {
+                    echo("<h1>Error: Tato operace není povolena</h1>");
+                }
             }
         ?>
     </main>

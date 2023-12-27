@@ -173,3 +173,7 @@ form {
 #star {
     font-size: 3em;
 }
+
+.hidden {
+    display: none;
+}
