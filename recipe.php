@@ -83,7 +83,7 @@
       <p id="description"><?php echo htmlspecialchars($recipe["description"]); ?></p>
 
         <h3>Komentáře: <?php if (!isset($_SESSION['loggedin'])) {echo('(Pro komentování je nutné mít účet)');}?></h3>
-        <form method="POST" action="saveComment.php" <?php if (!isset($_SESSION['loggedin'])) {echo('class="hidden"');}?>>
+        <form method="POST" action="saveComment.php" id="saveCommentForm" <?php if (!isset($_SESSION['loggedin'])) {echo('class="hidden"');}?>>
             <label for="comment">Vyjadřete se k receptu:</label>
             <div class="flexColumn">
                 <input type="hidden" name="recipeid" value="<?php echo($recipeid); ?>">

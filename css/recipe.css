@@ -195,3 +195,13 @@ form {
     padding-top:4rem;
     margin-bottom:0.3rem;
 }
+
+@media print {
+    #saveCommentForm {
+        display: none;
+    }
+    .blueButton, .redButton {
+        display: none;
+    }
+}
+
