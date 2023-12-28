@@ -22,8 +22,7 @@ if (isset($_POST["delete"]) && isset($_POST["recipeid"]) && isset($_POST["commen
             }
 
             if ($foundComment == null) {
-                //header("Location: error.php?code=404");
-                echo("tohle");
+                header("Location: error.php?code=404");
                 die();
             }
             else { //if comment is found

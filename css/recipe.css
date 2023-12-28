@@ -187,3 +187,11 @@ form {
     justify-content: start;
     gap: 1rem;
 }
+
+#commentChange {
+    padding-top:3rem;
+    text-align: center;
+    font-weight: bold;
+    padding-top:4rem;
+    margin-bottom:0.3rem;
+}

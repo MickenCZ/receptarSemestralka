@@ -117,7 +117,11 @@
                                     <input type="hidden" name="recipeid" value="<?php echo($recipeid); ?>">
                                     <input type="hidden" name="commentid" value="<?php echo($comment["commentid"]); ?>">
                                 </form>
-                                <form method="POST" action="changeComment.php"><button class="blueButton" type="submit" name="change" value="change">Upravit</button></form>
+                                <form method="POST" action="changeComment.php">
+                                    <button class="blueButton" type="submit" name="change" value="change">Upravit</button>
+                                    <input type="hidden" name="recipeid" value="<?php echo($recipeid); ?>">
+                                    <input type="hidden" name="commentid" value="<?php echo($comment["commentid"]); ?>">
+                                </form>
                             <?php  } ?>
                         </div>
                     </div>
