@@ -7,6 +7,7 @@ session_start();
         $rating = $_POST["rating"];
         $comment = $_POST["comment"];
         $recipeid = $_POST["recipeid"]; //from hidden input
+        $commentid = bin2hex(random_bytes(10));
         if (!in_array($rating, ["1", "2", "3", "4", "5"])) {
             header("Location: error.php?code=403");
             die();
@@ -21,10 +22,10 @@ session_start();
                 recipeidstringthing: [{comment:"asd", author:"asd", rating:"3"}],
             }*/
             if (isset($comments[$recipeid])) {
-                array_push($comments[$recipeid], array("rating"=>$rating, "comment"=>$comment, "author"=>$_SESSION['username']));
+                array_push($comments[$recipeid], array("rating"=>$rating, "comment"=>$comment, "author"=>$_SESSION['username'], "commentid"=>$commentid));
             }
             else {
-                $comments[$recipeid] = [array("rating"=>$rating, "comment"=>$comment, "author"=>$_SESSION['username'])];
+                $comments[$recipeid] = [array("rating"=>$rating, "comment"=>$comment, "author"=>$_SESSION['username'], "commentid"=>$commentid)];
             }
 
             file_put_contents("comments.json", json_encode($comments));

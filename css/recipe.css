@@ -177,3 +177,13 @@ form {
 .hidden {
     display: none;
 }
+
+#buttonForms form button {
+    width: 5rem;
+}
+
+#buttonForms {
+    display: flex;
+    justify-content: start;
+    gap: 1rem;
+}

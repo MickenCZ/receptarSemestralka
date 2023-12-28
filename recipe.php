@@ -109,11 +109,17 @@
                     <div class="commentBody">
                         <div class="author"><?php echo(htmlspecialchars($comment["author"]." ".$comment["rating"]."★")); ?></div>
                         <div class="commentText"><?php echo(htmlspecialchars($comment["comment"])); ?></div>
-                        <?php 
-                            if (isset($_SESSION["username"]) && $_SESSION["username"] == $comment["author"]) { ?>
-                                <button class="redButton">Smazat</button>
-                                <button class="blueButton">Upravit</button>
-                          <?php  } ?>
+                        <div id="buttonForms">
+                            <?php 
+                                if (isset($_SESSION["username"]) && $_SESSION["username"] == $comment["author"]) { ?>
+                                <form method="POST" action="deleteComment.php">
+                                    <button class="redButton" type="submit" name="delete" value="delete">Smazat</button>
+                                    <input type="hidden" name="recipeid" value="<?php echo($recipeid); ?>">
+                                    <input type="hidden" name="commentid" value="<?php echo($comment["commentid"]); ?>">
+                                </form>
+                                <form method="POST" action="changeComment.php"><button class="blueButton" type="submit" name="change" value="change">Upravit</button></form>
+                            <?php  } ?>
+                        </div>
                     </div>
                 </div>
             <?php } ?>
