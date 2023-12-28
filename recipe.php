@@ -35,7 +35,13 @@
     }
     else {
         $allComments = json_decode(file_get_contents("comments.json"), true);
-        $comments = $allComments[$recipeid];
+        if (isset($allComments[$recipeid])) {
+            $comments = $allComments[$recipeid];
+        }
+        else {
+            $comments = [];
+        }
+        
         
     }
 
@@ -103,8 +109,11 @@
                     <div class="commentBody">
                         <div class="author"><?php echo(htmlspecialchars($comment["author"]." ".$comment["rating"]."★")); ?></div>
                         <div class="commentText"><?php echo(htmlspecialchars($comment["comment"])); ?></div>
-                        <button class="redButton">Smazat</button>
-                        <button class="blueButton">Upravit</button>
+                        <?php 
+                            if (isset($_SESSION["username"]) && $_SESSION["username"] == $comment["author"]) { ?>
+                                <button class="redButton">Smazat</button>
+                                <button class="blueButton">Upravit</button>
+                          <?php  } ?>
                     </div>
                 </div>
             <?php } ?>
