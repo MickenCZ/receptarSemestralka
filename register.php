@@ -89,6 +89,9 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
     <link rel="stylesheet" href="./css/header.css">
     <script src="./js/register.js" defer></script>
     <link rel="shortcut icon" href="./images/cookbook.svg" type="image/x-icon">
+    <meta name="author" content="Michael Cirkl">
+    <meta name="description" content="Chutné recepty online">
+    <meta name="keywords" content="recepty online">
 </head>
 <body>
     <?php include "header.php" ?>

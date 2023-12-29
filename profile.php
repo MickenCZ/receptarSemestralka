@@ -18,13 +18,16 @@ if (isset($_POST['logout'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil</title>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/profile.css">
+    <meta name="author" content="Michael Cirkl">
+    <meta name="description" content="Chutné recepty online">
+    <meta name="keywords" content="recepty online">
 </head>
 <body>
     <?php

@@ -50,13 +50,16 @@ else {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Váš Receptář</title>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/index.css">
+    <meta name="author" content="Michael Cirkl">
+    <meta name="description" content="Chutné recepty online">
+    <meta name="keywords" content="recepty online">
 </head>
 <body>
     <?php 
@@ -88,7 +91,7 @@ else {
                 <a class="card" href="recipe.php?recipeid=<?php echo($recipe["key"]);?>">
                     <h3 class="title"><?php echo(htmlspecialchars($recipe["recipeName"]));?></h3>
                     <div class="author">Autor: <?php echo(htmlspecialchars($recipe["author"]));?></div>
-                    <img src="./images/<?php echo($recipe["key"]);?>" alt="image" width="230rem" class="image">
+                    <img src="./images/<?php echo($recipe["key"]);?>" alt="image" width="230" class="image">
                     <div class="tags">Tagy: <em><?php
                         $translatedTags = array_map(function ($tag) use ($dict) {return $dict[$tag];}, $recipe["tags"]);
                         echo(htmlspecialchars(implode(", ", $translatedTags)));

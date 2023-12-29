@@ -101,7 +101,7 @@ if (isset($_POST["recipeName"]) && isset($_POST["ingredients"]) && isset($_POST[
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -110,6 +110,9 @@ if (isset($_POST["recipeName"]) && isset($_POST["ingredients"]) && isset($_POST[
     <link rel="stylesheet" href="css/form.css">
     <link rel="stylesheet" href="css/addRecipe.css">
     <script src="js/addRecipe.js" defer></script>
+    <meta name="author" content="Michael Cirkl">
+    <meta name="description" content="Chutné recepty online">
+    <meta name="keywords" content="recepty online">
 </head>
 <body>
     <?php 

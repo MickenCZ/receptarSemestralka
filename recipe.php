@@ -48,19 +48,22 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($recipe["recipeName"]); ?></title>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/recipe.css">
+    <meta name="author" content="Michael Cirkl">
+    <meta name="description" content="Chutné recepty online">
+    <meta name="keywords" content="recepty online">
 </head>
 <body>
 <?php include "header.php" ?>
 <main>
     <section id="recipe">
-      <img src="<?php echo("./images/$recipeid"); ?>" alt="Obrázek receptu" id="image" height="320rem">
+      <img src="<?php echo("./images/$recipeid"); ?>" alt="Obrázek receptu" id="image" height="320">
       <h2 id="recipeName"><?php echo htmlspecialchars($recipe["recipeName"]); ?></h2>
       <p id="author">
         <div>Autor: <?php echo htmlspecialchars($recipe["author"]); ?></div>

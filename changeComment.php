@@ -59,13 +59,16 @@ if (isset($_POST["recipeid"]) && isset($_POST["commentid"]) && isset($_POST["rat
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upravit komentář</title>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/recipe.css">
+    <meta name="author" content="Michael Cirkl">
+    <meta name="description" content="Chutné recepty online">
+    <meta name="keywords" content="recepty online">
 </head>
 <body>
     <?php include "header.php" ?>
