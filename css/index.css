@@ -29,7 +29,7 @@ a {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 20rem;
     text-align: center;
-    height: 24rem;
+    height: 26rem;
 }
 
 .card:hover {
@@ -42,12 +42,6 @@ a {
 
 .image {
     border-radius: 3%;
-}
-
-.description {
-    word-break: break-all;
-    overflow: hidden;
-    max-height: 2.1rem;
 }
 
 .tags {

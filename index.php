@@ -94,7 +94,6 @@ else {
                         echo(htmlspecialchars(implode(", ", $translatedTags)));
                     ?></em></div>
                     <div class="ingredients">Ingredience: <?php echo(htmlspecialchars(implode(", ", $recipe["ingredients"])));?></div>
-                    <div class="description"><?php echo(htmlspecialchars($recipe["description"]));?></div>
                 </a>
                 <?php } ?>
         </section>
