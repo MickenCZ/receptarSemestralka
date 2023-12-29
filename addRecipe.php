@@ -93,6 +93,7 @@ if (isset($_POST["recipeName"]) && isset($_POST["ingredients"]) && isset($_POST[
         
         file_put_contents("recipes.json", json_encode($recipes));
         //now that everything is done, put the updated recipes assocArray into the recipes.json file.
+        header("Location: addRecipe.php"); //POST-redirect-GET
     }
 }
 

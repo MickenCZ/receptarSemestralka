@@ -42,6 +42,7 @@ a {
 
 .image {
     border-radius: 3%;
+    max-height: 12rem;
 }
 
 .tags {
