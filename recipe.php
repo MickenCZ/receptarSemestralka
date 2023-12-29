@@ -16,7 +16,7 @@
     }
     else {
         //main logic
-        $recipeid = $_GET["recipeid"];
+        $recipeid = $_GET["recipeid"]; //the id in url
         $recipe = $recipes[$recipeid];
 
     }
@@ -26,7 +26,7 @@
         "dinner"=>"večeře",
         "vegan"=>"veganské",
         "glutenFree"=>"bezlepkové"
-    ); //for translating tags
+    ); //for translating tags, they are stored in english
 
     //comments logic
     if (!is_readable("comments.json")) {
@@ -35,7 +35,7 @@
     }
     else {
         $allComments = json_decode(file_get_contents("comments.json"), true);
-        if (isset($allComments[$recipeid])) {
+        if (isset($allComments[$recipeid])) { //if key is set, add to the array that is in value, if key isnt set, create array
             $comments = $allComments[$recipeid];
         }
         else {

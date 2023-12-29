@@ -1,4 +1,9 @@
 <?php
+/*
+This endpoint gets hit when a user wants to delete a comment, it will get the commentid and recipeid from post params. 
+We want to delete it from our comments.json file and redirect the user back to the original recipe where the comment was.
+We need a lot of validation to check if the recipe and comment exist, and if the user has the rights to delete it.
+*/
 session_start();
 if (isset($_POST["delete"]) && isset($_POST["recipeid"]) && isset($_POST["commentid"])) { //Did click delete comment button?
     if (!isset($_SESSION['loggedin'])) {//is logged in?
@@ -34,18 +39,18 @@ if (isset($_POST["delete"]) && isset($_POST["recipeid"]) && isset($_POST["commen
                 }
                 else {
                     header("Location: error.php?code=403");
-                    die();
+                    die(); //trying to change someone elses recipe
                 }
             }
         }
         else {
             header("Location: error.php?code=404");
-            die();
+            die(); //trying to change comment on an unknown recipe
         }
     }
     else {
         header("Location: error.php?code=500");
-        die();
+        die(); //file comments.json is not readable.
     }
 
 }

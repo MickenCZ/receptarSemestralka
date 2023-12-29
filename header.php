@@ -6,7 +6,7 @@
         <a href="
         <?php
             if (session_status() == PHP_SESSION_NONE) {
-                session_start();
+                session_start(); //if session hasnt been started, start it
             }
             if (isset($_SESSION['loggedin'])) {
                     echo("./profile.php");

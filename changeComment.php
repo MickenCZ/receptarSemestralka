@@ -8,7 +8,7 @@ if (isset($_POST["recipeid"]) && isset($_POST["commentid"]) && isset($_POST["rat
     $currentUser = $_SESSION["username"];
     $recipeid = $_POST["recipeid"];
     $commentid = $_POST["commentid"];
-    if (!in_array($_POST["rating"], ["1", "2", "3", "4", "5"])) {
+    if (!in_array($_POST["rating"], ["1", "2", "3", "4", "5"])) { //submitted rating must be 1 to 5.
         header("Location: error.php?code=403");
         die();
     }//is rating valid?
@@ -21,7 +21,7 @@ if (isset($_POST["recipeid"]) && isset($_POST["commentid"]) && isset($_POST["rat
             $foundCommentIndex = null;
             foreach ($comments[$recipeid] as $index => $comment) {
                 if (isset($comment["commentid"]) && $comment["commentid"] == $commentid) {//if comment in iteration has desired commentid
-                    $foundComment = $comment; //load it into foundcomment variable
+                    $foundComment = $comment; //load comment we want to change into foundcomment variable
                     $foundCommentIndex = $index;
                 }
             }
@@ -31,8 +31,8 @@ if (isset($_POST["recipeid"]) && isset($_POST["commentid"]) && isset($_POST["rat
                 die();
             }
             else { //if comment is found
-                if ($foundComment["author"] == $currentUser) {//if its the same user
-                    //change file, this is the different code as opposedd ot deleteComment.php
+                if ($foundComment["author"] == $currentUser) {//if its the correct user
+                    //change comments.json file, this is the different code as opposed to deleteComment.php
                     $comments[$recipeid][$foundCommentIndex]["rating"] = $_POST["rating"]; //change set values of comment in assocArray
                     $comments[$recipeid][$foundCommentIndex]["comment"] = $_POST["comment"];
 
@@ -42,18 +42,18 @@ if (isset($_POST["recipeid"]) && isset($_POST["commentid"]) && isset($_POST["rat
                 }
                 else {
                     header("Location: error.php?code=403");
-                    die();
+                    die(); //trying to change someone elses recipe
                 }
             }
         }
         else {
             header("Location: error.php?code=404");
-            die();
+            die(); //trying to change comment on an unknown recipe
         }
     }
     else {
         header("Location: error.php?code=500");
-        die();
+        die(); //file comments.json is not readable.
     }
 }
 ?>

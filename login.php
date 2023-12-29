@@ -25,7 +25,7 @@ if (isset($_POST["username"]) && isset($_POST["password1"])) {
     }
     else {
         $valid = false;
-        $error .= "Stala se chyba serveru";
+        $error .= "Stala se chyba serveru"; //soubor users.json nejde přečíst
     }
 
     if (!$valid) {
