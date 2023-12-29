@@ -63,7 +63,7 @@
 <?php include "header.php" ?>
 <main>
     <section id="recipe">
-      <img src="<?php echo("./images/$recipeid"); ?>" alt="Obrázek receptu" id="image" height="320">
+      <img src="<?php echo("./images/$recipeid"); ?>" alt="<?php echo(htmlspecialchars($recipe["recipeName"]));?>" id="image" height="320">
       <h2 id="recipeName"><?php echo htmlspecialchars($recipe["recipeName"]); ?></h2>
       <p id="author">
         <div>Autor: <?php echo htmlspecialchars($recipe["author"]); ?></div>

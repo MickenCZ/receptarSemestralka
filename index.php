@@ -91,7 +91,7 @@ else {
                 <a class="card" href="recipe.php?recipeid=<?php echo($recipe["key"]);?>">
                     <h3 class="title"><?php echo(htmlspecialchars($recipe["recipeName"]));?></h3>
                     <div class="author">Autor: <?php echo(htmlspecialchars($recipe["author"]));?></div>
-                    <img src="./images/<?php echo($recipe["key"]);?>" alt="image" width="230" class="image">
+                    <img src="./images/<?php echo($recipe["key"]);?>" alt="<?php echo(htmlspecialchars($recipe["recipeName"]));?>" width="230" class="image">
                     <div class="tags">Tagy: <em><?php
                         $translatedTags = array_map(function ($tag) use ($dict) {return $dict[$tag];}, $recipe["tags"]);
                         echo(htmlspecialchars(implode(", ", $translatedTags)));
