@@ -1,4 +1,14 @@
 <?php
+/**
+ * Job: Save a valid recipe to recipes.json.
+ * If the user is logged in, redirect to index.php. If all fields in the form are set, validate each input. If
+ * something isn’t alright, send back a prefilled form with errors. If valid, the goals are: read
+ * recipes.json, parse our recipe to an associative array conformant to the recipes.json schema, then
+ * update the recipes.json file on the filesystem, then redirect back so reloading the page doesn’t send it
+ * again. The image in the form is saved into ./images/recipeID. The parsing is quite complicated, but
+ * well explained in this file itself
+ */
+
 session_start();
 if (!isset($_SESSION['loggedin'])) {
     header("Location: login.php");

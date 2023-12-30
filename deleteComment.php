@@ -1,9 +1,16 @@
 <?php
-/*
-This endpoint gets hit when a user wants to delete a comment, it will get the commentid and recipeid from post params. 
-We want to delete it from our comments.json file and redirect the user back to the original recipe where the comment was.
-We need a lot of validation to check if the recipe and comment exist, and if the user has the rights to delete it.
-*/
+/**
+ * Job: Take recipeid and commentid from hidden inputs beside the delete button and remove comment
+ * from comments.json.
+ * If recipeid and commentid are set, it reads the file, tries finding the comment, and if successful (ids
+ * match) and if the logged in user is the same as comment author, it removes the comment and writes
+ * changes to comments.json by unsetting that comment.
+ * 
+ * This endpoint gets hit when a user wants to delete a comment, it will get the commentid and recipeid from post params. 
+ * We want to delete it from our comments.json file and redirect the user back to the original recipe where the comment was.
+ * We need a lot of validation to check if the recipe and comment exist, and if the user has the rights to delete it.
+ */
+
 session_start();
 if (isset($_POST["delete"]) && isset($_POST["recipeid"]) && isset($_POST["commentid"])) { //Did click delete comment button?
     if (!isset($_SESSION['loggedin'])) {//is logged in?

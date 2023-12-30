@@ -1,4 +1,13 @@
 <?php
+/**
+ * Job: Login users
+ * If the user is logged in, redirect to index.php. If all fields in the form are set, validate each input. If
+ * something isn’t alright, send back a prefilled form with errors. This is done by echoing data in the GET
+ * superglobal. If the data filled in the form is valid, using session superglobal, log in the user. Then,
+ * redirect to index.php so he can look at recipes.
+ */
+
+
 session_start();
 if (isset($_SESSION['loggedin'])) {
     header("Location: index.php");

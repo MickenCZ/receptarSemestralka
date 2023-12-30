@@ -1,4 +1,12 @@
 <?php
+/**
+ * Job: Show user information to the user
+ * It checks if the user is logged in and if not, redirects him. It greets the user, 
+ * recommends him some food, shows username and email and shows a button to log out.
+ * Logging out just submits a form to this file, which in turn destroys the session.
+ */
+
+
 session_start();
 if (!isset($_SESSION['loggedin'])) {
     header("Location: login.php");

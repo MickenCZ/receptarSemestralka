@@ -1,3 +1,13 @@
+<?php
+/**
+ * Job: Display errors 
+ * Displays a multitude of errors, mostly for cases when some essential 
+ * JSON files are missing, in which case display a 500, or if a user
+ * request is wrong or forbidden, so 400 series errors.
+ */
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

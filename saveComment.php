@@ -1,4 +1,13 @@
 <?php
+/**
+ * Job: Take in information from the form in recipe.php and save comment to comments.json.
+ * It reads rating, comment and recipeid from the form on recipe.php, because it is set as its action. If
+ * everything is valid and is set, (including session username, which we need), we can open
+ * comments.json file, and either create a new array for that key(recipeid) or push to an existing one.
+ * Comment schema is described above. After the changes are written, user is redirected back to
+ * original recipe, since we have the recipeid. This handles post-redirect-get.
+ */
+
 session_start();
     //comment and rating form
     if (isset($_POST["rating"]) && isset($_POST["comment"]) && isset($_POST["recipeid"])) {

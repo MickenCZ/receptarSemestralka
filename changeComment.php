@@ -1,4 +1,16 @@
 <?php
+/**
+ * Job: Use recipeid and commentid from hidden inputs, then let the user write a new comment and/or
+ * rating and use all four pieces of information to make a valid change to comments.json.
+ * It is an actual page with html, not just an API endpoint. Hidden inputs with recipeid and commentid
+ * are echoed into the html form, which we need to do to preserve information from recipe.php. The
+ * user doesn’t see that though, they need to fill in the other form elements to change rating and/or
+ * comment text. If everything is set correctly, we use the same finding algorithm for the comment as
+ * we did in deleteComment and we change the values in the object/assocArray to their new rating and
+ * comment. After everything is done, it is written to comments.json and user is taken back. In general,
+ * changeComment and deleteComment work almost the exact same way, except changeComment has
+ * the added complexity of also needing to take in information from the second form on the page itself.
+ */
 session_start();
 if (isset($_POST["recipeid"]) && isset($_POST["commentid"]) && isset($_POST["rating"]) && isset($_POST["comment"])) { //Did click delete comment button?
     if (!isset($_SESSION['loggedin'])) {//is logged in?

@@ -1,4 +1,11 @@
-
+<?php
+/**
+ * Job: Basic HTML for the header. 
+ * Some a tags in a nav and header. The last anchor tag goes to user's profile
+ * or login page, based on if user is logged in. The reason for line 15 is that
+ * we need to start a session, but only if one already doesn't exist.
+ */
+?>
 <header>
     <nav>
         <a href="./">Feed</a>

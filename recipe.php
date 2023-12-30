@@ -1,4 +1,13 @@
 <?php
+/**
+ * Job: Display finer details about a specific recipe and let users write and access comments.
+ * The page itself doesn’t do anything, but it uses a get parameter called recipeid for dynamic
+ * pagination, so each recipe.php?recipeid=someid represents an individual recipe. The PHP in this file is
+ * light, mostly just doing error handling and reading comments and recipe details from the json files, so
+ * they can be displayed below, which contains a lot of HTML. As shown in the diagram, it calls 3 API
+ * endpoints to handle comments that are explained below.
+ */
+
 //If statements structured like guard clauses
     if (!isset($_GET["recipeid"])) {//Each recipe is identified with an ID, if it doesnt have it, url has been tampered with
         header("Location: error.php?code=404");

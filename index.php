@@ -1,7 +1,41 @@
 <?php
+/**
+ * Job: Showcase recipes on the website; let users sort them and filter them.
+ * Recipes are loaded from recipes.json, each is given a key property which previously served as the key
+ * in recipes.json, this is because my parsing algorithm will destroy the keys and replace it with
+ * numbers, thus treating it like an array and easily iterating over it in a foreach loop. Only those recipes
+ * whose tags contain all tags wanted by the user are let through the filter function. Then, they are
+ * alphabetically sorted, or reverse alphabetically if the GET superglobal is set that way. In the view part,
+ * there is a foreach loop displaying all the data for each recipe. The most complex are tags (array of
+ * strings), which have to be translated using a dictionary and a map function, then displayed by joining
+ * the array into a string. 
+ */
+
+ /**
+ * Case-incensitive compare, returns -1 or 1 based on which is earlier in the alphabet.
+ *
+ * Gets used as a function for the usort below. We want to alphabetically sort an array of recipes.
+ * We do this by examining its recipeName property. It takes in two recipes, and returns -1 if first
+ * recipe is earlier in alphabet, and 1 if second is earlier in alphabet. This works well with the
+ * usort function below, because it requires this number representation.
+ * @typedef Recipe {
+ *   recipeName: string,
+ *   description: string,
+ *   ingredients: array<int, string>,
+ *   author: string,
+ *   tags: array<int, string>,
+ *   key?: string
+ * }
+ * 
+ *
+ * @param Recipe $a First recipe to compare
+ * @param Recipe $b First recipe to compare
+ *
+ * @return int
+ */
 function compareRecipeNames($a, $b) {
     return strcasecmp($a['recipeName'], $b['recipeName']);
-}//Case-incensitive compare, returns -1 or 1 based on which is earlier in the alphabet.
+}
 
 if (is_readable("recipes.json")) {
     $recipes = json_decode(file_get_contents("recipes.json"), true);
@@ -21,8 +55,7 @@ if (is_readable("recipes.json")) {
     $recipes = array_filter($recipes, function ($recipe) use ($wantedFilters) {
         return !array_diff($wantedFilters, $recipe["tags"]);
     });
-    //removes all recipes that don't adhere to filters
-
+    //removes all recipes whose tags don't adhere to filters
 
     usort($recipes, 'compareRecipeNames'); //Sorts the array alphabetically, in place
     if (isset($_GET["sorting"]) && $_GET["sorting"] == "reverseAlphabetic") {
