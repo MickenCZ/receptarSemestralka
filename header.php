@@ -5,6 +5,9 @@
  * or login page, based on if user is logged in. The reason for line 15 is that
  * we need to start a session, but only if one already doesn't exist.
  */
+if (session_status() == PHP_SESSION_NONE) {
+    session_start(); //if session hasnt been started, start it
+}
 ?>
 <header>
     <nav>
@@ -12,9 +15,6 @@
         <a href="./addRecipe.php">Přidat recept</a>
         <a href="
         <?php
-            if (session_status() == PHP_SESSION_NONE) {
-                session_start(); //if session hasnt been started, start it
-            }
             if (isset($_SESSION['loggedin'])) {
                     echo("./profile.php");
                 }
