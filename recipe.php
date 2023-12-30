@@ -8,6 +8,7 @@
  * endpoints to handle comments that are explained below.
  */
 
+session_start();
 //If statements structured like guard clauses
     if (!isset($_GET["recipeid"])) {//Each recipe is identified with an ID, if it doesnt have it, url has been tampered with
         header("Location: error.php?code=404");

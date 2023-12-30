@@ -37,6 +37,7 @@ function compareRecipeNames($a, $b) {
     return strcasecmp($a['recipeName'], $b['recipeName']);
 }
 
+session_start();
 if (is_readable("recipes.json")) {
     $recipes = json_decode(file_get_contents("recipes.json"), true);
     foreach (array_keys($recipes) as $key) {

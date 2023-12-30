@@ -5,6 +5,7 @@
  * JSON files are missing, in which case display a 500, or if a user
  * request is wrong or forbidden, so 400 series errors.
  */
+session_start();
 ?>
 
 
