@@ -5,9 +5,6 @@
  * or login page, based on if user is logged in. The reason for line 15 is that
  * we need to start a session, but only if one already doesn't exist.
  */
-if (session_status() == PHP_SESSION_NONE) {
-    session_start(); //if session hasnt been started, start it
-}
 ?>
 <header>
     <nav>
