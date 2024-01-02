@@ -97,3 +97,30 @@ label {
     color:darkslategray;
     margin-bottom:1rem;
 }
+
+#pages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin-top: 2rem;
+}
+
+#pages span {
+    font-size: 2em;
+    margin-right: 1em;
+}
+
+.pageLink {
+    font-size: 1.4em;
+    padding: 0.5em 1em;
+    background-color: #17a2b8;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.pageLink:hover {
+    background-color: #138496;
+}

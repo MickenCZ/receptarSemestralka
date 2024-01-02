@@ -63,7 +63,14 @@ if (is_readable("recipes.json")) {
         $recipes = array_reverse($recipes);//if user wants reverseAlphabetic, we will reverse the array
     }
 
+    //pagination
+    $pageLimit = 3; //Number of recipes to display per page
+    $pageNumber = isset($_GET['page']) ? intval($_GET['page']) : 1; //PageNumber is either the value in page get parameter, or 1
 
+    $offset = ($pageNumber - 1) * $pageLimit;
+    $recipeCount = count($recipes); //Save the amount of recipes, before we remove the ones from other pages
+    $recipes = array_slice($recipes, $offset, $pageLimit);
+    
     //Now the recipes associative array is sorted, filtered and loaded into $recipes variable.
     //We just need a simple dictionary to translate tags from their English names. Done it translate function.
     $dict = array(
@@ -117,6 +124,7 @@ else {
             <label for="vegan">Veganské</label>
             <input type="checkbox" name="glutenFree" value="glutenFree" id="glutenFree">
             <label for="glutenFree">Bez lepku</label>
+            <input type="hidden" name="page" value="<?php echo($pageNumber); ?>">
             <button type="submit" id="submitButton">Aplikovat</button>
         </form>
         <section id="recipes">
@@ -133,6 +141,16 @@ else {
                     <div class="ingredients">Ingredience: <?php echo(htmlspecialchars(implode(", ", $recipe["ingredients"])));?></div>
                 </a>
                 <?php } ?>
+        </section>
+        <section id="pages">
+            <span>Stránky:</span>
+    <?php
+    $totalPages = ceil($recipeCount / $pageLimit); //pageLimit is max number of recipes per page
+
+    for ($i = 1; $i <= $totalPages; $i++) {
+        echo("<a class='pageLink' href='?page=$i'> $i </a>");
+    }
+    ?>
         </section>
     </main>
 </body>
