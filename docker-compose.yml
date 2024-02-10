@@ -1,6 +1,0 @@
-version: "2"
-services:
-  myphpservice:
-    image: myphpimage
-    ports:
-     - "80:80"
